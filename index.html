@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KWC STORE - FREE FIRE SUPREME</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div id="sidebar" class="sidebar">
+        <div class="user-info">
+            <img src="https://i.imgur.com/vHpx5yS.jpg" alt="Avatar">
+            <p id="user-name">Khách</p>
+            <p id="user-balance">Số dư: 0đ</p>
+        </div>
+        <hr>
+        <a href="#"><i class="fas fa-history"></i> Lịch sử mua</a>
+        <a href="#"><i class="fas fa-credit-card"></i> Nạp thẻ cào</a>
+        <a href="#"><i class="fas fa-university"></i> Chuyển khoản</a>
+        <a href="#"><i class="fas fa-gem"></i> Rút Kim Cương</a>
+        <a href="#"><i class="fas fa-headset"></i> Hỗ trợ</a>
+        <a href="admin.html" style="color: #ff00ff;"><i class="fas fa-user-shield"></i> PANEL ADMIN</a>
+    </div>
+
+    <nav>
+        <div class="menu-btn" onclick="toggleSidebar()"><i class="fas fa-bars"></i></div>
+        <div class="logo">KWC SHOP</div>
+        <div class="auth-btns">
+            <button class="btn-sm" onclick="showAuth('login')">Đăng nhập</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="section-title">VÒNG QUAY MAY MẮN</div>
+        <div class="wheel-box">
+            <div id="wheel" class="wheel"></div>
+            <button class="btn-buy" onclick="spin()">QUAY (20K)</button>
+        </div>
+
+        <div class="section-title">DANH MỤC ACC FF</div>
+        <div class="grid" id="acc-list">
+            </div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

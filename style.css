@@ -1,0 +1,27 @@
+:root {
+    --neon: #00f2fe; --pink: #ff00ff; --dark: #0a0a0c; --glass: rgba(255,255,255,0.05);
+}
+body { background: var(--dark); color: white; font-family: 'Segoe UI', sans-serif; margin: 0; }
+
+nav { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: rgba(0,0,0,0.8); border-bottom: 2px solid var(--neon); position: sticky; top:0; z-index: 99; }
+.logo { font-weight: bold; font-size: 20px; text-shadow: 0 0 10px var(--neon); }
+
+/* Sidebar */
+.sidebar { position: fixed; left: -280px; top: 0; width: 260px; height: 100%; background: #111; transition: 0.3s; z-index: 1000; padding: 20px; box-shadow: 5px 0 15px rgba(0,0,0,0.5); }
+.sidebar.active { left: 0; }
+.sidebar a { display: block; color: white; text-decoration: none; padding: 15px 0; border-bottom: 1px solid #222; }
+
+/* Wheel */
+.wheel-box { text-align: center; background: var(--glass); padding: 20px; border-radius: 15px; margin: 20px; border: 1px solid var(--pink); }
+.wheel { width: 250px; height: 250px; border-radius: 50%; border: 5px solid #fff; margin: 10px auto; background: conic-gradient(red, blue, green, yellow, pink, cyan); transition: 5s cubic-bezier(0.1, 0, 0.1, 1); }
+
+/* Grid */
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; padding: 10px; }
+@media (min-width: 768px) { .grid { grid-template-columns: repeat(4, 1fr); } }
+
+.card { background: var(--glass); border-radius: 10px; border: 1px solid #333; overflow: hidden; }
+.card img { width: 100%; height: 120px; object-fit: cover; }
+.card-info { padding: 10px; text-align: center; }
+.btn-buy { width: 100%; background: var(--neon); border: none; padding: 10px; font-weight: bold; cursor: pointer; border-radius: 5px; }
+
+.section-title { padding: 10px 20px; font-weight: bold; color: var(--neon); border-left: 4px solid var(--neon); margin: 10px; }

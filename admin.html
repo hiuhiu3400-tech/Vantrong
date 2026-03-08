@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="tabs">
+        <button onclick="showTab('addAcc')">Thêm Acc</button>
+        <button onclick="showTab('catMgr')">Tạo Danh Mục</button>
+        <button onclick="showTab('moneyMgr')">Cộng/Trừ Tiền</button>
+    </div>
+
+    <div id="addAcc" class="tab-content active">
+        <textarea id="dataInput" placeholder="ID|RANK|GIÁ|ẢNH|DANH_MỤC"></textarea>
+        <button onclick="addBatch()">ĐĂNG BÁN SIÊU TỐC</button>
+    </div>
+
+    <div id="moneyMgr" class="tab-content">
+        <input type="text" id="uid" placeholder="UID Người dùng">
+        <input type="number" id="amount" placeholder="Số tiền">
+        <button onclick="updateBalance(1)">Cộng Tiền</button>
+        <button onclick="updateBalance(-1)">Trừ Tiền</button>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>
+    <script>
+        const firebaseConfig = { /* DÁN MÃ CỦA BẠN VÀO ĐÂY */ };
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        function addBatch() {
+            const data = document.getElementById('dataInput').value.split('\n');
+            data.forEach(line => {
+                const [id, rank, price, img, cat] = line.split('|');
+                db.ref('accounts').push({ id, rank, price, img, cat });
+            });
+            alert("Đã thêm hàng loạt!");
+        }
+
+        function updateBalance(type) {
+            const uid = document.getElementById('uid').value;
+            const amount = document.getElementById('amount').value * type;
+            db.ref('users/' + uid + '/balance').transaction(b => (b || 0) + amount);
+            alert("Đã cập nhật số dư!");
+        }
+    </script>
+</body>
+</html>
